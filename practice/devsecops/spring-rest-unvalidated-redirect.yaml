@@ -1,0 +1,14 @@
+rules:
+- id: spring-rest-unvalidated-redirect
+  languages: [java]
+  severity: WARNING
+  message: >-
+    Application redirects a user to a destination URL taken from a user-supplied parameter via
+    ResponseEntity.location(URI.create(...)), without validating it against an allow-list.
+  metadata:
+    cwe:
+    - "CWE-601: URL Redirection to Untrusted Site ('Open Redirect')"
+    category: security
+    technology: [spring]
+  pattern: |
+    ResponseEntity.status($S).location(URI.create($URL)).build()

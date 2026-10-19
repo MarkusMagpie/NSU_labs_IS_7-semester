@@ -8,6 +8,15 @@
 docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=<token> semgrep/semgrep semgrep scan --config p/java --json --output /src/semgrep-report.json
 ```
 
+```
+docker run --rm -v "${PWD}:/src" -e SEMGREP_APP_TOKEN=<тут мой токен ляляля> semgrep/semgrep semgrep scan --config p/java --json --output /src/semgrep-report.json
+```
+Вариант с кастомным правилом для поиска OpenRedirect:
+```
+docker run --rm -v "${PWD}:/src" -v "/home/matveysorokin/Desktop/NSU_labs_IS_7-semester/practice/devsecops/spring-rest-unvalidated-redirect.yaml:/rule.yaml" \
+-e SEMGREP_APP_TOKEN=<тут мой токен ляляля> semgrep/semgrep semgrep scan --config p/java --config /rule.yaml --json --output /src/semgrep-report-custom.json
+```
+
 Он найдет уязвимость path traversal:
 
 ```
