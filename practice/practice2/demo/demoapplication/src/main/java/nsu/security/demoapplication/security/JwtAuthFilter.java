@@ -35,6 +35,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             Claims claims = jwtUtil.parseToken(authHeader.substring(7));
             request.setAttribute("username", claims.getSubject());
             request.setAttribute("role", claims.get("role", String.class));
+            // далее эти атрибуты доступны в контроллерах которые используют их
         } catch (Exception e) {
             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Невалидный токен");
             return;
