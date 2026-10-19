@@ -94,7 +94,6 @@ public class FileController {
     }
 
 
-
     private static final Tika tika = new Tika();
     private static final List<String> ALLOWED_TYPES = List.of("image/png", "image/jpeg");
 
